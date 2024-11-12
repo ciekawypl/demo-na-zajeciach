@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://cg33wyj1sr7x"]
+[gd_scene load_steps=4 format=3 uid="uid://cg33wyj1sr7x"]
 
 [ext_resource type="PackedScene" uid="uid://ddv2sng2sic5d" path="res://player/Player.tscn" id="1_0oyil"]
+[ext_resource type="PackedScene" uid="uid://db3k03js7prn1" path="res://coin/Coin.tscn" id="2_s0mwj"]
+[ext_resource type="PackedScene" uid="uid://dy7m6aulhn7c1" path="res://coin counter/Coin Counter.tscn" id="3_uukq0"]
 
 [node name="Level1" type="Node2D"]
 
@@ -11,4 +13,11 @@ position = Vector2(169, 143)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 build_mode = 1
-polygon = PackedVector2Array(0, 654, 1158, 654, 1155, -2, 0, -2)
+polygon = PackedVector2Array(-11, 330, 581, 326, 574, -2, 0, -2)
+
+[node name="Coin" parent="." instance=ExtResource("2_s0mwj")]
+position = Vector2(461, 251)
+
+[node name="CoinCounter" parent="." instance=ExtResource("3_uukq0")]
+
+[connection signal="coinPickedUp" from="Player" to="CoinCounter" method="increaseCoins"]
